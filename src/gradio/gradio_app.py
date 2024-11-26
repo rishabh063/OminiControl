@@ -9,7 +9,7 @@ from ..condition import Condition
 from ..generate import seed_everything, generate
 
 pipe = None
-use_int8 = True
+use_int8 = False
 
 
 def get_gpu_memory():

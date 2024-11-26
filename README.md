@@ -48,7 +48,7 @@ pip install -r requirements.txt
 
 ### Gradio app
 To run the Gradio app for subject-driven generation:
-  ```bash
+```bash
 python -m src.gradio.gradio_app
 ```
 

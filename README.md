@@ -9,7 +9,7 @@
 <a href="https://huggingface.co/spaces/Yuanshi/OminiControl"><img src="https://img.shields.io/badge/🤗_HF-Space-ffbd45.svg" alt="HuggingFace"></a>
 <a href="https://github.com/Yuanshi9815/Subjects200K"><img src="https://img.shields.io/badge/GitHub-Subjects200K dataset-blue.svg?logo=github&" alt="GitHub"></a>
 
-> **OminiControl: Minimal and Universal Control for Diffuison Transformer**
+> **OminiControl: Minimal and Universal Control for Diffusion Transformer**
 > <br>
 > Zhenxiong Tan, 
 > [Songhua Liu](http://121.37.94.87/), 

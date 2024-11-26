@@ -2,23 +2,41 @@ import gradio as gr
 import torch
 from PIL import Image, ImageDraw, ImageFont
 from diffusers.pipelines import FluxPipeline
+from diffusers import FluxTransformer2DModel
 import numpy as np
 
 from ..condition import Condition
 from ..generate import seed_everything, generate
 
 pipe = None
+use_int8 = False
+
+
+def get_gpu_memory():
+    return torch.cuda.get_device_properties(0).total_memory / 1024**3
 
 
 def init_pipeline():
     global pipe
-    pipe = FluxPipeline.from_pretrained(
-        "black-forest-labs/FLUX.1-schnell", torch_dtype=torch.bfloat16
-    )
+    if use_int8 or get_gpu_memory() < 33:
+        transformer_model = FluxTransformer2DModel.from_pretrained(
+            "sayakpaul/flux.1-schell-int8wo-improved",
+            torch_dtype=torch.bfloat16,
+            use_safetensors=False,
+        )
+        pipe = FluxPipeline.from_pretrained(
+            "black-forest-labs/FLUX.1-schnell",
+            transformer=transformer_model,
+            torch_dtype=torch.bfloat16,
+        )
+    else:
+        pipe = FluxPipeline.from_pretrained(
+            "black-forest-labs/FLUX.1-schnell", torch_dtype=torch.bfloat16
+        )
     pipe = pipe.to("cuda")
     pipe.load_lora_weights(
         "Yuanshi/OminiControl",
-        weight_name=f"omini/subject_512.safetensors",
+        weight_name="omini/subject_512.safetensors",
         adapter_name="subject",
     )
 
@@ -73,7 +91,7 @@ def get_samples():
         },
         {
             "image": "assets/tshirt.jpg",
-            "text": "On the beach, a lady sits under a beach umbrella with 'Omini' written on it. She's wearing this shirt and has a big smile on her face, with her surfboard hehind her."
+            "text": "On the beach, a lady sits under a beach umbrella with 'Omini' written on it. She's wearing this shirt and has a big smile on her face, with her surfboard hehind her.",
         },
     ]
     return [[Image.open(sample["image"]), sample["text"]] for sample in sample_list]

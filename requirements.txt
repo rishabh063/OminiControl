@@ -6,3 +6,4 @@ protobuf
 sentencepiece
 gradio
 jupyter
+torchao

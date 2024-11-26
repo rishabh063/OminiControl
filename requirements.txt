@@ -4,3 +4,5 @@ peft
 opencv-python
 protobuf
 sentencepiece
+gradio
+jupyter

@@ -1,11 +1,11 @@
 import gradio as gr
 import torch
 from PIL import Image, ImageDraw, ImageFont
-from src.condition import Condition
 from diffusers.pipelines import FluxPipeline
 import numpy as np
 
-from src.generate import seed_everything, generate
+from ..condition import Condition
+from ..generate import seed_everything, generate
 
 pipe = None
 
@@ -70,6 +70,10 @@ def get_samples():
         {
             "image": "assets/clock.jpg",
             "text": "In a Bauhaus style room, this item is placed on a shiny glass table, with a vase of flowers next to it. In the afternoon sun, the shadows of the blinds are cast on the wall.",
+        },
+        {
+            "image": "assets/tshirt.jpg",
+            "text": "On the beach, a lady sits under a beach umbrella with 'Omini' written on it. She's wearing this shirt and has a big smile on her face, with her surfboard hehind her."
         },
     ]
     return [[Image.open(sample["image"]), sample["text"]] for sample in sample_list]

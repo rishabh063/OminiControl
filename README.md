@@ -52,6 +52,13 @@ To run the Gradio app for subject-driven generation:
 python -m src.gradio.gradio_app
 ```
 
+### Guidelines for subject-driven generation
+1. Input images are automatically center-cropped and resized to 512x512 resolution.
+2. When writing prompts, refer to the subject using phrases like `this item`, `the object`, or `it`. e.g.
+   1. *A close up view of this item. It is placed on a wooden table.*
+   2. *A young lady is wearing this shirt.*
+3. The model primarily works with objects rather than human subjects currently, due to the absence of human data in training.
+
 ## Generated samples
 ### Subject-driven generation
 <a href="https://huggingface.co/spaces/Yuanshi/OminiControl"><img src="https://img.shields.io/badge/🤗_HF-Space-ffbd45.svg" alt="HuggingFace"></a>
@@ -123,6 +130,15 @@ python -m src.gradio.gradio_app
 | --------------------------------------------------------------------------------------------------------- | ---------- | -------------------------------------------------------------------------- | ------------ |
 | [`experimental`](https://huggingface.co/Yuanshi/OminiControl/tree/main/experimental) / `<task_name>`      | FLUX.1     | Canny edge to image, depth to image, colorization, deblurring, in-painting | (512, 512)   |
 | [`experimental`](https://huggingface.co/Yuanshi/OminiControl/tree/main/experimental) / `<task_name>_1024` | FLUX.1     | Supports higher resolution.(To be released)                                | (1024, 1024) |
+
+## Limitations
+1. The model's subject-driven generation primarily works with objects rather than human subjects due to the absence of human data in training.
+2. The subject-driven generation model may not work well with `FLUX.1-dev`.
+3. The released model currently only supports the resolution of 512x512.
+
+## To-do
+- [ ] Release the model for higher resolution (1024x1024).
+- [ ] Release the training code.
 
 ## Citation
 ```

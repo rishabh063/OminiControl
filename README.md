@@ -5,8 +5,8 @@
 <br>
 
 <a href="https://arxiv.org/abs/2411.15098"><img src="https://img.shields.io/badge/ariXv-2411.15098-A42C25.svg" alt="arXiv"></a>
-<a href="https://huggingface.co/Yuanshi/OminiControl"><img src="https://img.shields.io/badge/🤗_HF-Model-ffbd45.svg" alt="HuggingFace"></a>
-<a href="https://huggingface.co/spaces/Yuanshi/OminiControl"><img src="https://img.shields.io/badge/🤗_HF-Space-ffbd45.svg" alt="HuggingFace"></a>
+<a href="https://huggingface.co/Yuanshi/OminiControl"><img src="https://img.shields.io/badge/🤗_HuggingFace-Model-ffbd45.svg" alt="HuggingFace"></a>
+<a href="https://huggingface.co/spaces/Yuanshi/OminiControl"><img src="https://img.shields.io/badge/🤗_HuggingFace-Space-ffbd45.svg" alt="HuggingFace"></a>
 <a href="https://github.com/Yuanshi9815/Subjects200K"><img src="https://img.shields.io/badge/GitHub-Subjects200K dataset-blue.svg?logo=github&" alt="GitHub"></a>
 
 > **OminiControl: Minimal and Universal Control for Diffusion Transformer**
@@ -61,7 +61,7 @@ python -m src.gradio.gradio_app
 
 ## Generated samples
 ### Subject-driven generation
-<a href="https://huggingface.co/spaces/Yuanshi/OminiControl"><img src="https://img.shields.io/badge/🤗_HF-Space-ffbd45.svg" alt="HuggingFace"></a>
+<a href="https://huggingface.co/spaces/Yuanshi/OminiControl"><img src="https://img.shields.io/badge/🤗_HuggingFace-Space-ffbd45.svg" alt="HuggingFace"></a>
 
 **Demos** (Left: condition image; Right: generated image)
 

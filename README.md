@@ -134,6 +134,7 @@ python -m src.gradio.gradio_app
 
 ## Community Extensions
 - [ComfyUI-Diffusers-OminiControl](https://github.com/Macoron/ComfyUI-Diffusers-OminiControl) - ComfyUI integration by [@Macoron](https://github.com/Macoron)
+- [ComfyUI_RH_OminiControl](https://github.com/HM-RunningHub/ComfyUI_RH_OminiControl) - ComfyUI integration by [@HM-RunningHub](https://github.com/HM-RunningHub)
 
 ## Limitations
 1. The model's subject-driven generation primarily works with objects rather than human subjects due to the absence of human data in training.

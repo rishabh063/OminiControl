@@ -78,6 +78,7 @@ def generate(
     config_path: str = None,
     model_config: Optional[Dict[str, Any]] = {},
     condition_scale: float = 1.0,
+    default_lora: bool = False,
     **params: dict,
 ):
     model_config = model_config or get_config(config_path).get("model", {})
@@ -176,7 +177,8 @@ def generate(
     use_condition = conditions is not None or []
     if use_condition:
         assert len(conditions) <= 1, "Only one condition is supported for now."
-        pipeline.set_adapters(conditions[0].condition_type)
+        if not default_lora:
+            pipeline.set_adapters(conditions[0].condition_type)
         for condition in conditions:
             tokens, ids, type_id = condition.encode(self)
             condition_latents.append(tokens)  # [batch_size, token_n, token_dim]

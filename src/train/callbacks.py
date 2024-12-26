@@ -109,19 +109,19 @@ class TrainingCallback(L.Callback):
             test_list.extend(
                 [
                     (
-                        Image.open("images/test_in.jpg"),
+                        Image.open("assets/test_in.jpg"),
                         [0, -32],
                         "Resting on the picnic table at a lakeside campsite, it's caught in the golden glow of early morning, with mist rising from the water and tall pines casting long shadows behind the scene.",
                     ),
                     (
-                        Image.open("images/test_out.jpg"),
+                        Image.open("assets/test_out.jpg"),
                         [0, -32],
                         "In a bright room. It is placed on a table.",
                     ),
                 ]
             )
         elif condition_type == "canny":
-            condition_img = Image.open("images/vase.jpg").resize(
+            condition_img = Image.open("assets/vase.jpg").resize(
                 (condition_size, condition_size)
             )
             condition_img = np.array(condition_img)
@@ -130,7 +130,7 @@ class TrainingCallback(L.Callback):
             test_list.append((condition_img, [0, 0], "A beautiful vase on a table."))
         elif condition_type == "coloring":
             condition_img = (
-                Image.open("images/vase.jpg")
+                Image.open("assets/vase.jpg")
                 .resize((condition_size, condition_size))
                 .convert("L")
                 .convert("RGB")
@@ -144,7 +144,7 @@ class TrainingCallback(L.Callback):
                     device="cpu",
                 )
             condition_img = (
-                Image.open("images/vase.jpg")
+                Image.open("assets/vase.jpg")
                 .resize((condition_size, condition_size))
                 .convert("RGB")
             )
@@ -152,14 +152,14 @@ class TrainingCallback(L.Callback):
             test_list.append((condition_img, [0, 0], "A beautiful vase on a table."))
         elif condition_type == "depth_pred":
             condition_img = (
-                Image.open("images/vase.jpg")
+                Image.open("assets/vase.jpg")
                 .resize((condition_size, condition_size))
                 .convert("RGB")
             )
             test_list.append((condition_img, [0, 0], "A beautiful vase on a table."))
         elif condition_type == "deblurring":
             blur_radius = 5
-            image = Image.open("./images/vase.jpg")
+            image = Image.open("./assets/vase.jpg")
             condition_img = (
                 image.convert("RGB")
                 .resize((condition_size, condition_size))
@@ -169,7 +169,7 @@ class TrainingCallback(L.Callback):
             test_list.append((condition_img, [0, 0], "A beautiful vase on a table."))
         elif condition_type == "fill":
             condition_img = (
-                Image.open("./images/vase.jpg")
+                Image.open("./assets/vase.jpg")
                 .resize((condition_size, condition_size))
                 .convert("RGB")
             )
@@ -201,6 +201,7 @@ class TrainingCallback(L.Callback):
                 width=target_size,
                 generator=generator,
                 model_config=pl_module.model_config,
+                default_lora=True,
             )
             res.images[0].save(
                 os.path.join(save_path, f"{file_name}_{condition_type}_{i}.jpg")

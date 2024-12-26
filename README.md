@@ -137,9 +137,13 @@ python -m src.gradio.gradio_app
 2. The subject-driven generation model may not work well with `FLUX.1-dev`.
 3. The released model currently only supports the resolution of 512x512.
 
+## Training
+Training instructions can be found in this [folder](./train).
+
+
 ## To-do
+- [x] Release the training code.
 - [ ] Release the model for higher resolution (1024x1024).
-- [ ] Release the training code.
 
 ## Citation
 ```

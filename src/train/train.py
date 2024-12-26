@@ -63,7 +63,7 @@ def main():
         print("Config:", config)
 
     # Initialize dataset and dataloader
-    if training_config["condition_type"] in ["identity"]:
+    if training_config["condition_type"] in ["subject"]:
         dataset = load_dataset("Yuanshi/Subjects200K")
 
         # Define filter function
@@ -95,13 +95,11 @@ def main():
         )
     elif training_config["condition_type"] in [
         "canny",
-        "super_resolution",
-        "random_outpainting",
-        "colorization",
+        "coloring",
         "deblurring",
         "depth",
         "depth_pred",
-        "mask_painting",
+        "fill",
     ]:
         # Load dataset text-to-image-2M
         base_url = "https://huggingface.co/datasets/jackyhate/text-to-image-2M/resolve/main/data_512_2M/data_{i:06d}.tar"

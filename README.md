@@ -32,7 +32,7 @@ OminiControl is a minimal yet powerful universal control framework for Diffusion
 * **Minimal Design 🚀**: Injects control signals while preserving original model structure. Only introduces 0.1% additional parameters to the base model.
 
 ## News
-- **2024-12-26**: ⭐️ Training code are released. Now you can customize your own model by defining your own control signals.
+- **2024-12-26**: ⭐️ Training code are released. Now you can create your own OminiControl model by customizing any control tasks (3D, multi-view, pose-guided, try-on, etc.) with the FLUX model. Check the [training folder](./train) for more details.
 
 ## Quick Start
 ### Setup (Optional)

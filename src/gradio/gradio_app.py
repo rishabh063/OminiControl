@@ -5,8 +5,8 @@ from diffusers.pipelines import FluxPipeline
 from diffusers import FluxTransformer2DModel
 import numpy as np
 
-from ..condition import Condition
-from ..generate import seed_everything, generate
+from ..flux.condition import Condition
+from ..flux.generate import seed_everything, generate
 
 pipe = None
 use_int8 = False

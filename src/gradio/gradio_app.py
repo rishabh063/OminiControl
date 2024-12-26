@@ -54,7 +54,7 @@ def process_image_and_text(image, text):
     )
     image = image.resize((512, 512))
 
-    condition = Condition("subject", image)
+    condition = Condition("subject", image, position_delta=(0, 32))
 
     if pipe is None:
         init_pipeline()

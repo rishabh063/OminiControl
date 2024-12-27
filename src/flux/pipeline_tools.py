@@ -19,6 +19,14 @@ def encode_images(pipeline: FluxPipeline, images: Tensor):
         pipeline.device,
         pipeline.dtype,
     )
+    if images_tokens.shape[1] != images_ids.shape[0]:
+        images_ids = pipeline._prepare_latent_image_ids(
+            images.shape[0],
+            images.shape[2] // 2,
+            images.shape[3] // 2,
+            pipeline.device,
+            pipeline.dtype,
+        )
     return images_tokens, images_ids
 
 

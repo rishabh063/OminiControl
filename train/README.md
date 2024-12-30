@@ -50,6 +50,7 @@ This repository supports 5 spatial control tasks:
 4. Depth map to image (`depth`)
 5. Image to depth map  (`depth_pred`)
 6. Image inpainting (`fill`)
+7. Super resolution (`sr`)
 
 You can modify the `condition_type` parameter in config file `config/canny_512.yaml` to switch between different tasks.
 

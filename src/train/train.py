@@ -63,7 +63,7 @@ def main():
         print("Config:", config)
 
     # Initialize dataset and dataloader
-    if training_config["condition_type"] in ["subject"]:
+    if training_config["dataset"]["type"] == "subject":
         dataset = load_dataset("Yuanshi/Subjects200K")
 
         # Define filter function
@@ -93,20 +93,11 @@ def main():
             drop_text_prob=training_config["dataset"]["drop_text_prob"],
             drop_image_prob=training_config["dataset"]["drop_image_prob"],
         )
-    elif training_config["condition_type"] in [
-        "canny",
-        "coloring",
-        "deblurring",
-        "depth",
-        "depth_pred",
-        "fill",
-    ]:
+    elif training_config["dataset"]["type"] == "img":
         # Load dataset text-to-image-2M
-        base_url = "https://huggingface.co/datasets/jackyhate/text-to-image-2M/resolve/main/data_512_2M/data_{i:06d}.tar"
-        urls = [base_url.format(i=i) for i in range(46, 47)]
         dataset = load_dataset(
             "webdataset",
-            data_files={"train": urls},
+            data_files={"train": training_config["dataset"]["urls"]},
             split="train",
             cache_dir="cache/t2i2m",
             num_proc=32,
@@ -159,6 +150,8 @@ def main():
         max_epochs=training_config.get("max_epochs", -1),
         gradient_clip_val=training_config.get("gradient_clip_val", 0.5),
     )
+
+    setattr(trainer, "training_config", training_config)
 
     # Save config
     save_path = training_config.get("save_path", "./output")

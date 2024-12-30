@@ -20,6 +20,11 @@ train:
   # Options: ["canny", "coloring", "deblurring", "depth", "depth_pred", "fill"]
   condition_type: "canny"
   dataset:
+    type: "img"
+    urls:
+      - "https://huggingface.co/datasets/jackyhate/text-to-image-2M/resolve/main/data_512_2M/data_000046.tar"
+      - "https://huggingface.co/datasets/jackyhate/text-to-image-2M/resolve/main/data_512_2M/data_000045.tar"
+    cache_name: "data_512_2M"
     condition_size: 512
     target_size: 512
     drop_text_prob: 0.1

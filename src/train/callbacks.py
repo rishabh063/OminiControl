@@ -97,8 +97,8 @@ class TrainingCallback(L.Callback):
         condition_type="super_resolution",
     ):
         # TODO: change this two variables to parameters
-        condition_size = 512
-        target_size = 512
+        condition_size = trainer.training_config["dataset"]["condition_size"]
+        target_size = trainer.training_config["dataset"]["target_size"]
 
         generator = torch.Generator(device=pl_module.device)
         generator.manual_seed(42)
@@ -121,7 +121,7 @@ class TrainingCallback(L.Callback):
                 ]
             )
         elif condition_type == "canny":
-            condition_img = Image.open("assets/vase.jpg").resize(
+            condition_img = Image.open("assets/vase_hq.jpg").resize(
                 (condition_size, condition_size)
             )
             condition_img = np.array(condition_img)
@@ -130,7 +130,7 @@ class TrainingCallback(L.Callback):
             test_list.append((condition_img, [0, 0], "A beautiful vase on a table."))
         elif condition_type == "coloring":
             condition_img = (
-                Image.open("assets/vase.jpg")
+                Image.open("assets/vase_hq.jpg")
                 .resize((condition_size, condition_size))
                 .convert("L")
                 .convert("RGB")
@@ -144,7 +144,7 @@ class TrainingCallback(L.Callback):
                     device="cpu",
                 )
             condition_img = (
-                Image.open("assets/vase.jpg")
+                Image.open("assets/vase_hq.jpg")
                 .resize((condition_size, condition_size))
                 .convert("RGB")
             )
@@ -152,14 +152,14 @@ class TrainingCallback(L.Callback):
             test_list.append((condition_img, [0, 0], "A beautiful vase on a table."))
         elif condition_type == "depth_pred":
             condition_img = (
-                Image.open("assets/vase.jpg")
+                Image.open("assets/vase_hq.jpg")
                 .resize((condition_size, condition_size))
                 .convert("RGB")
             )
             test_list.append((condition_img, [0, 0], "A beautiful vase on a table."))
         elif condition_type == "deblurring":
             blur_radius = 5
-            image = Image.open("./assets/vase.jpg")
+            image = Image.open("./assets/vase_hq.jpg")
             condition_img = (
                 image.convert("RGB")
                 .resize((condition_size, condition_size))
@@ -169,13 +169,15 @@ class TrainingCallback(L.Callback):
             test_list.append((condition_img, [0, 0], "A beautiful vase on a table."))
         elif condition_type == "fill":
             condition_img = (
-                Image.open("./assets/vase.jpg")
+                Image.open("./assets/vase_hq.jpg")
                 .resize((condition_size, condition_size))
                 .convert("RGB")
             )
             mask = Image.new("L", condition_img.size, 0)
             draw = ImageDraw.Draw(mask)
-            draw.rectangle([128, 128, 384, 384], fill=255)
+            a = condition_img.size[0] // 4
+            b = a * 3
+            draw.rectangle([a, a, b, b], fill=255)
             condition_img = Image.composite(
                 condition_img, Image.new("RGB", condition_img.size, (0, 0, 0)), mask
             )

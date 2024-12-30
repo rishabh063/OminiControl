@@ -22,11 +22,15 @@
     ```
     bash train/script/data_download/data_download2.sh
     ```
-    **Note:** Only `data_000046.tar` is used by default. You can modify `data_download2.sh` to download other datasets (remember to update the dataset loading code in `train.py` accordingly).
+    **Note:** By default, only a few files are downloaded. You can modify `data_download2.sh` to download additional datasets. Remember to update the config file to specify the training data accordingly.
 
 ## Training
 
 ### Start training training
+**Config file path**: `./train/config`
+
+**Scripts path**: `./train/script`
+
 1. Subject-driven generation
     ```bash
     bash train/script/train_subject.sh

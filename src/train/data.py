@@ -187,6 +187,12 @@ class ImageConditionDataset(Dataset):
             condition_img = Image.composite(
                 image, Image.new("RGB", image.size, (0, 0, 0)), mask
             )
+        elif self.condition_type == "sr":
+            condition_img = image.resize(
+                (self.condition_size, self.condition_size)
+            ).convert("RGB")
+            position_delta = np.array([0, -self.condition_size // 16])
+
         else:
             raise ValueError(f"Condition type {self.condition_type} not implemented")
 

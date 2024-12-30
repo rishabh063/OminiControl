@@ -182,6 +182,13 @@ class TrainingCallback(L.Callback):
                 condition_img, Image.new("RGB", condition_img.size, (0, 0, 0)), mask
             )
             test_list.append((condition_img, [0, 0], "A beautiful vase on a table."))
+        elif condition_type == "sr":
+            condition_img = (
+                Image.open("assets/vase_hq.jpg")
+                .resize((condition_size, condition_size))
+                .convert("RGB")
+            )
+            test_list.append((condition_img, [0, -16], "A beautiful vase on a table."))
         else:
             raise NotImplementedError
 

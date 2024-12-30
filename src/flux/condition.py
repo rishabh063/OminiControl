@@ -15,6 +15,7 @@ condition_dict = {
     "deblurring": 7,
     "depth_pred": 8,
     "fill": 9,
+    "sr": 10,
 }
 
 
@@ -100,6 +101,7 @@ class Condition(object):
             "deblurring",
             "depth_pred",
             "fill",
+            "sr",
         ]:
             tokens, ids = encode_images(pipe, self.condition)
         else:

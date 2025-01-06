@@ -89,7 +89,7 @@ You can customize your own task by constructing a new dataset and modifying the 
         "your_condition_type": your_condition_id_number, # Add your condition type here
     }
     ...
-    if self.condition_type in [
+    if condition_type in [
         ...
         "your_condition_type", # Add your condition type here
     ]:

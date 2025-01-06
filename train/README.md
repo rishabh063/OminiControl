@@ -108,6 +108,22 @@ You can customize your own task by constructing a new dataset and modifying the 
         ...
         test_list.append((condition_img, [0, 0], "A beautiful vase on a table."))
     ```
+
+4. **Import relevant dataset in the training script**
+   Update the file in the following section. (`src/train/train.py`)
+   ```python
+    from .data import (
+        ImageConditionDataset,
+        Subject200KDateset,
+        MyDataset
+    )
+    ...
+   
+    # Initialize dataset and dataloader
+    if training_config["dataset"]["type"] == "your_condition_type":
+       ...
+   ```
+   
 </details>
 
 ## Hardware requirement

@@ -79,7 +79,7 @@ You can customize your own task by constructing a new dataset and modifying the 
                 "position_delta": position_delta
             }
     ```
-    **Note:** For spatial control tasks, set the `position_delta` to be `[0, 0]`. For non-spatial control tasks, set `position_delta` to be `[0, condition_width // 16]`.
+    **Note:** For spatial control tasks, set the `position_delta` to be `[0, 0]`. For non-spatial control tasks, set `position_delta` to be `[0, -condition_width // 16]`.
 2. **Condition**:
    
    Add a new condition type in the `Condition` class. (`src/flux/condition.py`)

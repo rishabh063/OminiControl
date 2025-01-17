@@ -128,5 +128,11 @@ You can customize your own task by constructing a new dataset and modifying the 
 
 ## Hardware requirement
 **Note**: Memory optimization (like dynamic T5 model loading) is pending implementation.
+
+**Recommanded**
 - Hardware: 2x NVIDIA H100 GPUs
 - Memory: ~80GB GPU memory
+
+**Minimal**
+- Hardware: 1x NVIDIA L20 GPU
+- Memory: ~48GB GPU memory

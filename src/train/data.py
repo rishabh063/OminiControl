@@ -6,7 +6,7 @@ import torchvision.transforms as T
 import random
 
 
-class Subject200KDateset(Dataset):
+class Subject200KDataset(Dataset):
     def __init__(
         self,
         base_dataset,

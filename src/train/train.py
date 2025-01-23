@@ -9,7 +9,7 @@ from datasets import load_dataset
 
 from .data import (
     ImageConditionDataset,
-    Subject200KDateset,
+    Subject200KDataset,
     CartoonDataset
 )
 from .model import OminiModel
@@ -84,7 +84,7 @@ def main():
             num_proc=16,
             cache_file_name="./cache/dataset/data_valid.arrow",
         )
-        dataset = Subject200KDateset(
+        dataset = Subject200KDataset(
             data_valid,
             condition_size=training_config["dataset"]["condition_size"],
             target_size=training_config["dataset"]["target_size"],
@@ -111,7 +111,7 @@ def main():
             drop_text_prob=training_config["dataset"]["drop_text_prob"],
             drop_image_prob=training_config["dataset"]["drop_image_prob"],
         )
-    elif training_config["dataset"]["type"] == "cartoon"::
+    elif training_config["dataset"]["type"] == "cartoon":
         dataset = load_dataset("saquiboye/oye-cartoon", split="train")
         dataset = CartoonDataset(
             dataset,

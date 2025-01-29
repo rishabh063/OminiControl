@@ -8,7 +8,7 @@ import prodigyopt
 from ..flux.transformer import tranformer_forward
 from ..flux.condition import Condition
 from ..flux.pipeline_tools import encode_images, prepare_text_input
-
+import os
 
 class OminiModel(L.LightningModule):
     def __init__(
@@ -22,6 +22,7 @@ class OminiModel(L.LightningModule):
         optimizer_config: dict = None,
         gradient_checkpointing: bool = False,
     ):
+        
         # Initialize the LightningModule
         super().__init__()
         self.model_config = model_config
@@ -29,7 +30,7 @@ class OminiModel(L.LightningModule):
 
         # Load the Flux pipeline
         self.flux_pipe: FluxPipeline = (
-            FluxPipeline.from_pretrained(flux_pipe_id).to(dtype=dtype).to(device)
+            FluxPipeline.from_pretrained(flux_pipe_id , cache_dir="cache").to(dtype=dtype).to(device)
         )
         self.transformer = self.flux_pipe.transformer
         self.transformer.gradient_checkpointing = gradient_checkpointing

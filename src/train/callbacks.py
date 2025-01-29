@@ -107,16 +107,16 @@ class TrainingCallback(L.Callback):
 
         if condition_type == "subject":
             test_list.extend(
-                [
+                 [
                     (
                         Image.open("assets/test_in.jpg"),
                         [0, -32],
-                        "Resting on the picnic table at a lakeside campsite, it's caught in the golden glow of early morning, with mist rising from the water and tall pines casting long shadows behind the scene.",
+                        "Resting on the picnic table at a lakeside campsite, it's caught in the golden glow of early morning, with mist rising from the water and tall pines casting long shadows behind the scene. <speZyRi>",
                     ),
                     (
                         Image.open("assets/test_out.jpg"),
                         [0, -32],
-                        "In a bright room. It is placed on a table.",
+                        "In a bright room. It is placed on a table. <speZyRi>",
                     ),
                 ]
             )

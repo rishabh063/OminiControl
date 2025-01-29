@@ -7,13 +7,13 @@ model:
   latent_lora: false
 
 train:
-  batch_size: 1
-  accumulate_grad_batches: 1
+  batch_size: 2
+  accumulate_grad_batches: 4
   dataloader_workers: 5
   save_interval: 1000
   sample_interval: 100
   max_steps: -1
-  gradient_checkpointing: true
+  gradient_checkpointing: false
   save_path: "runs"
 
   condition_type: "subject"
@@ -22,7 +22,7 @@ train:
     condition_size: 512
     target_size: 512
     image_size: 512
-    padding: 8
+    padding: 0
     drop_text_prob: 0.1
     drop_image_prob: 0.1
 

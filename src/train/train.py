@@ -65,8 +65,8 @@ def main():
 
     # Initialize dataset and dataloader
     if training_config["dataset"]["type"] == "subject":
+        # dataset = load_dataset("Yuanshi/Subjects200K_collection3")
         dataset = load_dataset("Yuanshi/Subjects200K")
-
         # Define filter function
         def filter_func(item):
             if not item.get("quality_assessment"):
@@ -83,6 +83,7 @@ def main():
             filter_func,
             num_proc=16,
             cache_file_name="./cache/dataset/data_valid.arrow",
+            # cache_file_name="./cache/dataset/data_valid.arrow",
         )
         dataset = Subject200KDataset(
             data_valid,

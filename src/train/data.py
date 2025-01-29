@@ -40,7 +40,10 @@ class Subject200KDataset(Dataset):
         item = self.base_dataset[idx // 2]
 
         # Crop the image to target and condition
-        image = item["image"]
+        image = item["image"].resize(
+            ((self.condition_size+self.padding)*2, self.condition_size+self.padding)
+        ).convert("RGB")
+        # image.save('runimgbase.webp')
         left_img = image.crop(
             (
                 self.padding,
@@ -70,7 +73,8 @@ class Subject200KDataset(Dataset):
         target_image = target_image.resize(
             (self.target_size, self.target_size)
         ).convert("RGB")
-
+        # condition_img.save('condition_img.webp')
+        # target_image.save('target_image.webp')
         # Get the description
         description = item["description"][
             "description_0" if target == 0 else "description_1"
@@ -80,11 +84,13 @@ class Subject200KDataset(Dataset):
         drop_text = random.random() < self.drop_text_prob
         drop_image = random.random() < self.drop_image_prob
         if drop_text:
-            description = ""
-        if drop_image:
+            description = "<speZyRi>"
+        elif drop_image:
             condition_img = Image.new(
                 "RGB", (self.condition_size, self.condition_size), (0, 0, 0)
             )
+        else:
+            description=description+" <speZyRi>"
 
         return {
             "image": self.to_tensor(target_image),
@@ -293,11 +299,13 @@ class CartoonDataset(Dataset):
         drop_text = random.random() < self.drop_text_prob
         drop_image = random.random() < self.drop_image_prob
         if drop_text:
-            description = ""
-        if drop_image:
+            description = "<speZyRi>"
+        elif drop_image:
             condition_img = Image.new(
                 "RGB", (self.condition_size, self.condition_size), (0, 0, 0)
             )
+        else:
+            description="<speZyRi> "+description
 
 
         return {

@@ -5,7 +5,7 @@
 export XFL_CONFIG=./train/config/subject_512.yaml
 
 # Specify the WANDB API key
-export WANDB_API_KEY='f35df6ae07ed38429412d04eb764046f132a3497'
+export WANDB_API_KEY=''
 
 echo $XFL_CONFIG
 export TOKENIZERS_PARALLELISM=true
